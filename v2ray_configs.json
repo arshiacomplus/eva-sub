@@ -1,5 +1,108 @@
 [
     {
+        "remarks": "EVA_DEU",
+        "log": {
+            "loglevel": "warning"
+        },
+        "inbounds": [
+            {
+                "tag": "socks",
+                "port": 10808,
+                "protocol": "socks",
+                "settings": {
+                    "auth": "noauth",
+                    "udp": true,
+                    "userLevel": 0
+                },
+                "sniffing": {
+                    "enabled": true,
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ]
+                }
+            }
+        ],
+        "outbounds": [
+            {
+                "tag": "proxy",
+                "protocol": "shadowsocks",
+                "settings": {
+                    "servers": [
+                        {
+                            "address": "194.87.71.12",
+                            "method": "chacha20-ietf-poly1305",
+                            "password": "T8kl6wkAtLsZ",
+                            "port": 443,
+                            "level": 0
+                        }
+                    ]
+                },
+                "streamSettings": {
+                    "network": "tcp"
+                },
+                "mux": {
+                    "enabled": false
+                }
+            },
+            {
+                "tag": "direct",
+                "protocol": "freedom",
+                "settings": {
+                    "domainStrategy": "UseIP"
+                }
+            },
+            {
+                "tag": "block",
+                "protocol": "blackhole",
+                "settings": {
+                    "response": {
+                        "type": "http"
+                    }
+                }
+            }
+        ],
+        "dns": {
+            "servers": [
+                "1.1.1.1",
+                "8.8.8.8"
+            ]
+        },
+        "routing": {
+            "domainStrategy": "IPIfNonMatch",
+            "rules": [
+                {
+                    "type": "field",
+                    "ip": [
+                        "1.1.1.1",
+                        "8.8.8.8"
+                    ],
+                    "port": "53",
+                    "outboundTag": "proxy"
+                },
+                {
+                    "type": "field",
+                    "domain": [
+                        "geosite:private"
+                    ],
+                    "outboundTag": "direct"
+                },
+                {
+                    "type": "field",
+                    "network": "udp",
+                    "port": "1-65535",
+                    "outboundTag": "proxy"
+                },
+                {
+                    "type": "field",
+                    "network": "tcp",
+                    "port": "1-65535",
+                    "outboundTag": "proxy"
+                }
+            ]
+        }
+    },
+    {
         "remarks": "EVA_NLD",
         "log": {
             "loglevel": "warning"
@@ -30,9 +133,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "89.23.103.80",
+                            "address": "89.23.103.188",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "UJ6n2EwsjYmv",
+                            "password": "Ebe8Q1UvuuvS",
                             "port": 443,
                             "level": 0
                         }
@@ -133,9 +236,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "81.177.214.214",
+                            "address": "212.87.222.158",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "SMOIyo2gKfIh",
+                            "password": "mc2HBZ6JmfCm",
                             "port": 443,
                             "level": 0
                         }
@@ -238,7 +341,7 @@
                         {
                             "address": "212.192.14.250",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "Gr3igweuX2uN",
+                            "password": "0pFWpslCxcsz",
                             "port": 443,
                             "level": 0
                         }
@@ -341,7 +444,7 @@
                         {
                             "address": "88.151.192.57",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "8peY5v1xNwCn",
+                            "password": "s1mJczEQMNw9",
                             "port": 443,
                             "level": 0
                         }
@@ -442,9 +545,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "45.95.233.131",
+                            "address": "45.95.233.233",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "Sscx7ZorhIqU",
+                            "password": "DAkEUM9O2Lz2",
                             "port": 443,
                             "level": 0
                         }
@@ -545,9 +648,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "62.60.234.151",
+                            "address": "62.60.234.22",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "sD3nT1KR7uOs",
+                            "password": "GKruCaSzKX3R",
                             "port": 443,
                             "level": 0
                         }
@@ -648,9 +751,112 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "31.129.22.126",
+                            "address": "31.129.22.66",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "foTInYymbqwX",
+                            "password": "XM67f2RAfUmZ",
+                            "port": 443,
+                            "level": 0
+                        }
+                    ]
+                },
+                "streamSettings": {
+                    "network": "tcp"
+                },
+                "mux": {
+                    "enabled": false
+                }
+            },
+            {
+                "tag": "direct",
+                "protocol": "freedom",
+                "settings": {
+                    "domainStrategy": "UseIP"
+                }
+            },
+            {
+                "tag": "block",
+                "protocol": "blackhole",
+                "settings": {
+                    "response": {
+                        "type": "http"
+                    }
+                }
+            }
+        ],
+        "dns": {
+            "servers": [
+                "1.1.1.1",
+                "8.8.8.8"
+            ]
+        },
+        "routing": {
+            "domainStrategy": "IPIfNonMatch",
+            "rules": [
+                {
+                    "type": "field",
+                    "ip": [
+                        "1.1.1.1",
+                        "8.8.8.8"
+                    ],
+                    "port": "53",
+                    "outboundTag": "proxy"
+                },
+                {
+                    "type": "field",
+                    "domain": [
+                        "geosite:private"
+                    ],
+                    "outboundTag": "direct"
+                },
+                {
+                    "type": "field",
+                    "network": "udp",
+                    "port": "1-65535",
+                    "outboundTag": "proxy"
+                },
+                {
+                    "type": "field",
+                    "network": "tcp",
+                    "port": "1-65535",
+                    "outboundTag": "proxy"
+                }
+            ]
+        }
+    },
+    {
+        "remarks": "EVA_LTU",
+        "log": {
+            "loglevel": "warning"
+        },
+        "inbounds": [
+            {
+                "tag": "socks",
+                "port": 10808,
+                "protocol": "socks",
+                "settings": {
+                    "auth": "noauth",
+                    "udp": true,
+                    "userLevel": 0
+                },
+                "sniffing": {
+                    "enabled": true,
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ]
+                }
+            }
+        ],
+        "outbounds": [
+            {
+                "tag": "proxy",
+                "protocol": "shadowsocks",
+                "settings": {
+                    "servers": [
+                        {
+                            "address": "78.153.131.156",
+                            "method": "chacha20-ietf-poly1305",
+                            "password": "RhWnM9pRosmJ",
                             "port": 443,
                             "level": 0
                         }
@@ -751,9 +957,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "185.39.207.145",
+                            "address": "185.39.207.37",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "0QSqm8JIRqSm",
+                            "password": "hQVQ81WEIybQ",
                             "port": 443,
                             "level": 0
                         }
@@ -854,9 +1060,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "178.22.31.117",
+                            "address": "195.133.88.32",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "EBqkeBRDe73C",
+                            "password": "8FtV8rKs1q5l",
                             "port": 443,
                             "level": 0
                         }
@@ -957,9 +1163,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "62.60.233.83",
+                            "address": "62.60.233.21",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "MEwcnAzLbOCe",
+                            "password": "yJ5z3wDHlQey",
                             "port": 443,
                             "level": 0
                         }
@@ -1062,7 +1268,7 @@
                         {
                             "address": "45.141.234.7",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "lIyH8P33ht17",
+                            "password": "TNuq4cA57ozS",
                             "port": 443,
                             "level": 0
                         }
@@ -1163,112 +1369,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "147.45.179.214",
+                            "address": "147.45.179.142",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "AtC8fRQoCeLN",
-                            "port": 443,
-                            "level": 0
-                        }
-                    ]
-                },
-                "streamSettings": {
-                    "network": "tcp"
-                },
-                "mux": {
-                    "enabled": false
-                }
-            },
-            {
-                "tag": "direct",
-                "protocol": "freedom",
-                "settings": {
-                    "domainStrategy": "UseIP"
-                }
-            },
-            {
-                "tag": "block",
-                "protocol": "blackhole",
-                "settings": {
-                    "response": {
-                        "type": "http"
-                    }
-                }
-            }
-        ],
-        "dns": {
-            "servers": [
-                "1.1.1.1",
-                "8.8.8.8"
-            ]
-        },
-        "routing": {
-            "domainStrategy": "IPIfNonMatch",
-            "rules": [
-                {
-                    "type": "field",
-                    "ip": [
-                        "1.1.1.1",
-                        "8.8.8.8"
-                    ],
-                    "port": "53",
-                    "outboundTag": "proxy"
-                },
-                {
-                    "type": "field",
-                    "domain": [
-                        "geosite:private"
-                    ],
-                    "outboundTag": "direct"
-                },
-                {
-                    "type": "field",
-                    "network": "udp",
-                    "port": "1-65535",
-                    "outboundTag": "proxy"
-                },
-                {
-                    "type": "field",
-                    "network": "tcp",
-                    "port": "1-65535",
-                    "outboundTag": "proxy"
-                }
-            ]
-        }
-    },
-    {
-        "remarks": "EVA_AUS",
-        "log": {
-            "loglevel": "warning"
-        },
-        "inbounds": [
-            {
-                "tag": "socks",
-                "port": 10808,
-                "protocol": "socks",
-                "settings": {
-                    "auth": "noauth",
-                    "udp": true,
-                    "userLevel": 0
-                },
-                "sniffing": {
-                    "enabled": true,
-                    "destOverride": [
-                        "http",
-                        "tls"
-                    ]
-                }
-            }
-        ],
-        "outbounds": [
-            {
-                "tag": "proxy",
-                "protocol": "shadowsocks",
-                "settings": {
-                    "servers": [
-                        {
-                            "address": "38.180.129.127",
-                            "method": "chacha20-ietf-poly1305",
-                            "password": "mG9jtp2NjCa9",
+                            "password": "sdc3mUqWtUSv",
                             "port": 443,
                             "level": 0
                         }
@@ -1369,9 +1472,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "147.45.116.40",
+                            "address": "147.45.116.36",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "gc4qtfeOvpUn",
+                            "password": "L2sp4kLTTv6W",
                             "port": 443,
                             "level": 0
                         }
@@ -1472,9 +1575,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "62.60.232.81",
+                            "address": "62.60.232.54",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "fg3GRmfmGKVS",
+                            "password": "rCkqZ2qtP89R",
                             "port": 443,
                             "level": 0
                         }
@@ -1575,9 +1678,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "45.12.134.240",
+                            "address": "45.12.134.195",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "cEHvqKCwBygD",
+                            "password": "tqR15z09Z3YW",
                             "port": 443,
                             "level": 0
                         }
@@ -1680,7 +1783,7 @@
                         {
                             "address": "188.116.20.199",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "jAcOdKyzyt3r",
+                            "password": "ak1gaT3QtUIX",
                             "port": 443,
                             "level": 0
                         }
@@ -1783,7 +1886,7 @@
                         {
                             "address": "193.201.15.208",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "lOwjJQvcHlq9",
+                            "password": "FkTBDJuLLVQo",
                             "port": 443,
                             "level": 0
                         }
@@ -1886,7 +1989,7 @@
                         {
                             "address": "81.19.140.176",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "c9hgS6f5OiYS",
+                            "password": "vtKh1E11BwJz",
                             "port": 443,
                             "level": 0
                         }
@@ -1987,9 +2090,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "145.249.109.64",
+                            "address": "145.249.109.3",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "VFFVy7aFesIG",
+                            "password": "DXCSQO6XLauI",
                             "port": 443,
                             "level": 0
                         }
@@ -2092,7 +2195,7 @@
                         {
                             "address": "89.221.225.88",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "yFuIKCIfaxQ2",
+                            "password": "gAYQD7iGxWhL",
                             "port": 443,
                             "level": 0
                         }
@@ -2193,9 +2296,9 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "45.89.55.22",
+                            "address": "2.56.172.91",
                             "method": "chacha20-ietf-poly1305",
-                            "password": "6WvxiXjvlO3Q",
+                            "password": "p3C1lrawPn4q",
                             "port": 443,
                             "level": 0
                         }
