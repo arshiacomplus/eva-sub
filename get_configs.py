@@ -9,7 +9,7 @@ API_URL = "https://api.evavpn.com/connections"
 
 
 HEADERS = {
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ4OGUwYmFjLTE4YWYtNDkxMS1hODM5LTQ3M2M4MmE5MjdkYyIsImlhdCI6MTc1MTY1MjI3OSwiZXhwIjoxNzU0MjQ0Mjc5fQ.5fK26ONpBKJlr2rtKuat52Zk8AlYhYdp8j7P1iAOSy4",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdmMTA2NWE3LTVlZWMtNGQ2Ny1iODM4LTA5OTFjODdkNWFhMyIsImlhdCI6MTc2MTMxMTA0MSwiZXhwIjoxNzYzOTAzMDQxfQ.m3YfTfTVyLulYz1YFmkzfT3bx_97uVwP3h7QPATQtTY",
     "Content-Type": "application/json; charset=UTF-8",
     "Host": "api.evavpn.com",
     "Connection": "Keep-Alive",
@@ -20,7 +20,7 @@ HEADERS = {
 
 BASE_BODY = {
   "d_t": "android",
-  "d_id": "7f9c6d81-c852-4920-bdde-54ebbede4ddd"
+  "d_id": "d8b9e1ec-2165-40b1-8a06-82d264486119"
 }
 
 SS_OUTPUT_FILE = "configs.txt"
